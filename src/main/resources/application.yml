@@ -1,0 +1,96 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/niuke?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: password
+  thymeleaf:
+    cache: false
+  mail:
+    host: smtp.163.com
+    username:
+    password:
+    default-encoding: utf-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+  redis:
+    database: 11
+    host: localhost
+    port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: community-consumer-group
+      enable-auto-commit: true
+      auto-commit-interval: 3000
+  data:
+    elasticsearch:
+      cluster-name: nowcoder
+      cluster-nodes: 127.0.0.1:9300
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 15
+        queue-capacity: 100
+    scheduling:
+      pool:
+        size: 5
+  quartz:
+    job-store-type: jdbc
+    scheduler-name: communityScheduler
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  cache:
+    caffeine:
+      spec:
+
+logging:
+  level:
+    community: debug
+  file:
+    path: d:/work/data/nowcoder/community
+
+#community
+community:
+  path:
+    domain: http://localhost:8080
+    upload: d:/work/data/upload
+server:
+  servlet:
+    context-path: /community
+mybatis-plus:
+  configuration:
+    use-generated-keys: true
+
+# wk 配置
+wk:
+  image:
+    command: d:/Program Files/wkhtmltopdf/bin/wkhtmltoimage
+    storage: d:/work/data/wk-image
+
+# 阿里云图片云服务器
+aliyun:
+  key:
+    access:
+    secret:
+  bucket:
+    header:
+      name: community-headerurl
+      url: oss-cn-guangzhou.aliyuncs.com
+    share:
+      name: community-shareurl
+      url: oss-cn-guangzhou.aliyuncs.com
+# caffenie
+caffenie:
+  posts:
+    max-size: 15
+    expire-seconds: 180
